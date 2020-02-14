@@ -1,0 +1,30 @@
+p,h1,h2,h3,h4,h5,h6{
+    font-family: 'ABeeZee', sans-serif;
+}
+.navbar{
+    background-color: #0A1128;
+}
+.navbar a{
+    color: #FEFCFB;
+}
+.nav-title{
+    font-size: 35px;
+}
+.toggle-icon{
+    color: #FEFCFB;
+}
+.sections-heading{
+    text-align: center;
+}
+.member-name{
+ font-size: 20px;
+    margin-bottom: 0px;
+}
+.member-position{
+    font-size: 15px;
+    font-weight: bold;
+}
+.member-image{
+    width: 250px;
+    height: 250px;
+}
