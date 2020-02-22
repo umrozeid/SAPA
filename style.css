@@ -28,3 +28,28 @@ p,h1,h2,h3,h4,h5,h6{
     width: 250px;
     height: 250px;
 }
+.achievements-text{
+    font-size: 20px;
+    font-weight: bold;
+}
+#AU hr{
+    border: 1px solid #bfbfbd;
+}
+.achievements-icon{
+    font-size: 70px;
+     color: rgb(221, 189, 4);
+}
+.page-footer{
+    background-color: #0A1128;
+    color: #FEFCFB;
+}
+.page-footer a{
+    color: inherit;
+    text-decoration: inherit;
+}
+.page-footer li{
+    list-style-type: none;
+}
+.page-footer ol{
+    margin: 0;
+}
