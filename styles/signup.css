@@ -1,0 +1,177 @@
+html, body {
+    height: 100vh;
+}
+body {
+    /*background: linear-gradient(90deg, rgba(188,188,193,1) 0%, rgba(226,224,224,1) 12%, rgba(201,201,201,1) 31%, rgba(116,116,116,1) 100%);*/
+    background-color: #0A1128;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color : rgb(99, 99, 99);
+    text-decoration:none;
+    cursor:pointer;
+}
+.form-content  {
+    /*border: 1px solid #E2E9ED;*/
+    background: #fff;
+    width: 851px;
+    border-radius: 3px;
+    border: #bab8ba solid 2px;
+    /*box-shadow: 2px 2px #c4a7be;*/
+}
+.form-content .form-left {
+    background-image: url("../img/image1.jpeg");
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+#sign-in-form-left-background {
+    /*background-position-y: bottom;*/
+    background-position: 0 0 !important;
+}
+.form-content .form-left .text-1,
+.form-content .form-left .text-2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #fff;
+}
+.form-content .form-left .text-1 p {
+    font-size: 32px;
+    line-height: 1.67;
+    font-family: 'Zilla Slab', serif;
+    letter-spacing: 1px;
+}
+.form-content .form-left .text-2 p {
+    font-family: 'Zilla Slab', serif;
+    font-size: 18px;
+}
+.form-content .form-detail {
+    padding: 100px 30px 20px 30px;
+    display: flex;
+    flex-direction: column;
+}
+@media only screen and (max-width: 767px) {
+    .form-content .form-left {
+        border-top-right-radius: 3px;
+        border-bottom-left-radius: 0;
+    }
+    .form-content .form-detail {
+        padding: 40px 30px 20px 30px;
+    }
+}
+.form-content .form-row {
+    width: 100%;
+}
+.form-content .form-detail label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: rgb(162, 162, 162);
+    display: block;
+    margin-bottom: 11px;
+    margin-left: 7px;
+}
+.form-content .form-detail .input-text {
+    width: 100%;
+    margin-bottom: 25px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #9f9b98;
+    outline: 0;
+    border: 0;
+    padding: 4px 7px;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+}
+.form-content .form-detail .input-text:focus {
+    border: 1px solid #323330;
+    border-radius: 3px;
+}
+
+.buttons {
+    flex-grow: 0;
+    align-self: flex-end;
+    width: 120px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 0;
+    background-color: #0E1838;
+    /*Text Styling*/
+    font-family: Roboto, serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 1px;
+    background-position: center;
+    transition: background 0.8s;
+}
+
+.buttons:hover {
+    background: rgb(22, 37, 87) radial-gradient(circle, transparent 1%, white 1%) center/15000%;
+}
+
+.buttons:active {
+    background-color: rgb(14,24,56);
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.buttons:focus {
+    outline: none;
+}
+.student-type {
+    display: flex;
+    justify-content: space-between;
+    /*margin-top: 2rem;*/
+}
+
+.radio-field {
+    margin-left: 15px;
+    margin-right: 26px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.radio-field label {
+    font-family: Roboto, serif;
+    color: #0e1838 !important;
+    font-size: 13px;
+    display: inline-block;
+    position: relative;
+    padding-top: 10px;
+    padding-left: 3px;
+}
+
+.radio-field input[type='radio'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/uncheckedRadio.svg");
+    transition: 300ms ease-out;
+}
+
+.radio-field input[type=radio]:checked {
+    background-image: url("../img/checkedRadio.svg");
+}
+
+.radio-field input[type="radio"]:active {
+    transform: scale(.3);
+}
+
+.radio-field input[type=radio]:focus {
+    outline: none;
+}
