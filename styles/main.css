@@ -178,7 +178,8 @@
   
   body {
     background: #FFF;
-    font-family: 'Roboto', sans-serif;
+    /*font-family: 'Roboto', sans-serif;*/
+    font-family: 'Volkhov', serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -196,7 +197,7 @@
   }*/
 
 p,h1,h2,h3,h4,h5,h6{
-    font-family: 'ABeeZee', sans-serif;
+  /*font-family: 'ABeeZee', sans-serif;*/
 }
 .navbar{
     background-color: #0A1128;
@@ -252,22 +253,29 @@ p,h1,h2,h3,h4,h5,h6{
     border: 1px solid #bfbfbd;
 }
 .achievements-icon{
-    font-size: 70px;
+    font-size: 55px;
      color: rgb(221, 189, 4);
 }
-.page-footer{
+#footer-upper-part{
     background-color: #0A1128;
     color: #FEFCFB;
 }
-.page-footer a{
+#footer-upper-part a{
     color: inherit;
     text-decoration: inherit;
 }
-.page-footer li{
+#footer-upper-part li{
     list-style-type: none;
 }
-.page-footer ol{
-    margin: 0;
+#footer-upper-part ul{
+    padding: 0;
+}
+#footer-lower-part{
+  color: #91908f;
+}
+#footer-lower-part a{
+  color: #91908f;
+  text-decoration: underline;
 }
 #aboutUs{
     color: white;
@@ -292,4 +300,3 @@ p,h1,h2,h3,h4,h5,h6{
   text-align: center;
   color: white;
 }
-.img-fluid{}
