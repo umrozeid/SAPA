@@ -233,6 +233,14 @@ p,h1,h2,h3,h4,h5,h6{
 .sections-heading{
     text-align: center;
 }
+#poly-div{
+  height: 200px;
+}
+@media (max-width: 600px) {
+  #poly-div{
+    height: 300px;
+  }
+}
 .member-name{
   font-size: 20px;
   margin-bottom: 0px;

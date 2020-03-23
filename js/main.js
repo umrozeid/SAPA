@@ -8,6 +8,6 @@ $(document).ready(() => {
             $('.navbar').removeClass('transparent');
         }
     });
-    const aboutUsHeight = $('#aboutUs').height();
-    $('#poly-div').height(0.35 * aboutUsHeight);
+    /*const aboutUsHeight = $('#aboutUs').height();
+    $('#poly-div').height(0.35 * aboutUsHeight);*/
 });
