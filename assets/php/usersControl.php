@@ -127,15 +127,14 @@ class UsersControl
             $result = $stmt->get_result();
             $recordsTotal =$result->num_rows;
             if (!empty($_POST["search"]["value"])){
-                $sql .= 'where(id LIKE "%'.$_POST["search"]["value"].'%" ';
-                $sql .= ' OR username LIKE "%'.$_POST["search"]["value"].'%" ';
+                $sql .= 'where(username LIKE "%'.$_POST["search"]["value"].'%" ';
                 $sql .= ' OR creationTime LIKE "%'.$_POST["search"]["value"].'%") ';
             }
             if (!empty($_POST["order"])){
                 $colunmIndex = $_POST['order']['0']['column'];
                 $sql .= 'order by '.$_POST["columns"][$colunmIndex]["name"].' '.$_POST['order']['0']['dir'].' ';
             } else {
-                $sql .= 'order by id DESC ';
+                $sql .= 'order by username ';
             }
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();

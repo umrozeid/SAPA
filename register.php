@@ -7,13 +7,13 @@ $success = false;
 $error = false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $name = $_POST["name"];
-    $email = trim($_POST["email"]);
+    $email = $_POST["email"];
     $faculty = $_POST["faculty"];
     $program = $_POST["program"];
-    $universityID = trim($_POST["universityID"]);
+    $universityID = $_POST["universityID"];
     $address = $_POST["address"];
     $facebook = $_POST["facebook"];
-    $phoneNumber = trim($_POST["phoneNumber"]);
+    $phoneNumber = $_POST["phoneNumber"];
     if($membersControl->addMember($name, $email, $faculty, $program, $universityID, $address, $facebook, $phoneNumber, 0)){
         $message = "Thank You for Registration";
         $success = true;
@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Join Us</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/signup.css">
+    <link rel="stylesheet" href="assets/styles/signup.css">
     <script src="https://kit.fontawesome.com/7429bca8b0.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=ABeeZee&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap" rel="stylesheet">

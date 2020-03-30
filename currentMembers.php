@@ -5,8 +5,8 @@ if(!isset($_SESSION["loggedIn"]) || !$_SESSION["loggedIn"] === true){
     header("location: signin.php");
     exit;
 }
-if (!isset($_SESSION["isAdmin"])|| $_SESSION["isAdmin"] == 0){
-    header("location: signin.php");
+if (!((isset($_SESSION['canViewMembers'])&&$_SESSION['canViewMembers'] == 1)||(isset($_SESSION['canEditMembers'])&&$_SESSION['canEditMembers'] == 1))){
+    header("location: user.php");
     exit;
 }
 ?>
@@ -30,20 +30,22 @@ if (!isset($_SESSION["isAdmin"])|| $_SESSION["isAdmin"] == 0){
 <?php include "assets/php/navbar.php"; ?>
 <div class="container flex-grow-1 d-flex flex-column justify-content-center mt-5">
     <div class="align-self-end">
-        <button type="button" name="add" id="addUser" class="btn btn-primary mb-2">Add New User</button>
+        <button type="button" name="add" id="addMember" class="btn btn-primary mb-2 <?php echo !(isset($_SESSION['canEditMembers'])&&$_SESSION['canEditMembers'] == 1) ? 'd-none' : ''; ?>">Add New Member</button>
     </div>
     <div class="table-responsive">
-        <table id="usersTable" class="table table-bordered table-striped">
+        <table id="membersTable" class="table table-bordered table-striped">
             <thead>
             <tr>
                 <th>#</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Admin</th>
-                <th>Can View Members</th>
-                <th>Can Edit Members</th>
-                <th>Can Edit Announcements</th>
-                <th>Can Edit Events</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Faculty</th>
+                <th>Program</th>
+                <th>University ID</th>
+                <th>Address</th>
+                <th>Facebook</th>
+                <th>Phone Number</th>
+                <th>Approved</th>
                 <th>Creation Time</th>
                 <th></th>
                 <th></th>
@@ -51,59 +53,48 @@ if (!isset($_SESSION["isAdmin"])|| $_SESSION["isAdmin"] == 0){
             </thead>
         </table>
     </div>
-    <div id="usersModal" class="modal fade" tabindex="-1">
+    <div id="membersModal" class="modal fade" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form method="post" id="usersForm">
+                <form method="post" id="membersForm">
                     <div class="modal-header">
-                        <h5 class="modal-title">Add User</h5>
+                        <h5 class="modal-title">Add Member</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" required>
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="isAdmin">Admin</label>
-                            <select class="form-control" id="isAdmin" name="isAdmin" required form="usersForm">
-                                <option value="0">No</option>
-                                <option value="1">Yes</option>
-                            </select>
+                            <label for="universityID">University ID</label>
+                            <input type="number" name="universityID" id="universityID" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="canViewMembers">Can View Members</label>
-                            <select class="form-control" id="canViewMembers" name="canViewMembers" required form="usersForm">
-                                <option value="0">No</option>
-                                <option value="1">Yes</option>
-                            </select>
+                            <label for="faculty">Faculty</label>
+                            <input type="text" name="faculty" id="faculty" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="canEditMembers"> Can Edit Members</label>
-                            <select class="form-control" id="canEditMembers" name="canEditMembers" required form="usersForm">
-                                <option value="0">No</option>
-                                <option value="1">Yes</option>
-                            </select>
+                            <label for="program">Program</label>
+                            <input type="text" name="program" id="program" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="canAddAnnouncements">Can Edit Announcements</label>
-                            <select class="form-control" id="canAddAnnouncements" name="canAddAnnouncements" required form="usersForm">
-                                <option value="0">No</option>
-                                <option value="1">Yes</option>
-                            </select>
+                            <label for="address">Address</label>
+                            <input type="text" name="address" id="address" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="canAddEvents">Can Edit Events</label>
-                            <select class="form-control" id="canAddEvents" name="canAddEvents" required form="usersForm">
-                                <option value="0">No</option>
-                                <option value="1">Yes</option>
-                            </select>
+                            <label for="facebook">Facebook</label>
+                            <input type="text" name="facebook" id="facebook" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control" pattern="[0]{1}[5]{1}[0-9]{8}"  title="i.e. 0598765432" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -125,6 +116,6 @@ if (!isset($_SESSION["isAdmin"])|| $_SESSION["isAdmin"] == 0){
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-<script src="assets/js/usersPanel.js"></script>
+<script src="assets/js/currentMembers.js"></script>
 </body>
 </html>
