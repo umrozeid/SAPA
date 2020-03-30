@@ -175,7 +175,7 @@
   .at-social__item svg:hover {
     fill: #788D96;
   }
-  
+
   body {
     background: #FFF;
     /*font-family: 'Roboto', sans-serif;*/
@@ -183,7 +183,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   /*.container {
     max-width: 1170px;
     width: 100%;
@@ -212,6 +212,9 @@ p,h1,h2,h3,h4,h5,h6{
 }
 .navbar a{
     color: #FEFCFB;
+}
+.navbar a:hover{
+  text-decoration: none;
 }
 .nav-title{
     font-size: 35px;
@@ -307,4 +310,27 @@ p,h1,h2,h3,h4,h5,h6{
   left: 16%;
   text-align: center;
   color: white;
+}
+.buttons {
+  flex-grow: 0;
+  width: 150px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 0;
+  background-color: #0E1838;
+  /*Text Styling*/
+  font-family: Roboto, serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  letter-spacing: 1px;
+  background-position: center;
+  transition: background 0.8s;
+}
+
+.buttons:hover {
+  background: rgb(22, 37, 87) radial-gradient(circle, transparent 1%, white 1%) center/15000%;
 }

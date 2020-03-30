@@ -1,0 +1,116 @@
+body{
+    background-color: #f7f6ff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.clickable{
+    cursor: pointer;
+}
+.not-clickable{
+    position: relative;
+    cursor: not-allowed;
+    z-index: 1;
+}
+.not-clickable::before{
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: -webkit-linear-gradient(45deg, #283048, #859398)!important;
+    z-index: -1;
+    transition: opacity 0.4s linear;
+    opacity: 0;
+}
+.not-clickable:hover::before{
+    opacity: 1;
+}
+.navbar{
+    background-color: #0A1128;
+    transition: all 0.3s ease-out;
+    font-family: 'Volkhov', serif;
+}
+.navbar-title {
+    letter-spacing: 5px;
+}
+.navbar a:hover{
+    text-decoration: none;
+}
+.transparent {
+    background-color: transparent;
+}
+.navbar a{
+    color: #FEFCFB;
+}
+.nav-title{
+    font-size: 35px;
+}
+.nav-item{
+    padding-right: 5px;
+    letter-spacing: 1px;
+}
+.toggle-icon{
+    color: #FEFCFB;
+}
+.heading{
+    font-size: 72px;
+    background: -webkit-linear-gradient(45deg, #283048, #859398);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.feature{
+    box-shadow: 0 5px 15px rgba(57, 98, 254, 0.02), 0 3px 6px rgba(117, 108, 254, 0.12);
+    border-radius: 3px;
+    color: white;
+}
+.feature-text{
+    font-size: 30px;
+}
+.feature-icon{
+    font-size: 50px;
+}
+.gradient-ibiza{
+    background: #ee0979;
+    background: -webkit-linear-gradient(45deg, #ee0979, #ff6a00)!important;
+    background: linear-gradient(45deg, #ee0979, #ff6a00)!important;
+}
+
+.gradient-deepblue{
+    background: #6a11cb;
+    background: -webkit-linear-gradient(45deg, #6a11cb, #2575fc)!important;
+    background: linear-gradient(45deg, #6a11cb , #2575fc)!important;
+}
+
+.gradient-ohhappiness {
+    background: #00b09b;
+    background: -webkit-linear-gradient(45deg, #00b09b, #96c93d)!important;
+    background: linear-gradient(45deg, #00b09b, #96c93d)!important;
+}
+.gradient-orange{
+    background: #fc4a1a;
+    background: -webkit-linear-gradient(45deg, #fc4a1a, #f7b733)!important;
+    background: linear-gradient(45deg, #fc4a1a, #f7b733)!important;
+}
+#footer-upper-part{
+    background-color: #0A1128;
+    color: #FEFCFB;
+}
+#footer-upper-part a{
+    color: inherit;
+    text-decoration: inherit;
+}
+#footer-upper-part li{
+    list-style-type: none;
+}
+#footer-upper-part ul{
+    padding: 0;
+}
+#footer-lower-part{
+    color: #91908f;
+}
+#footer-lower-part a{
+    color: #91908f;
+    text-decoration: underline;
+}

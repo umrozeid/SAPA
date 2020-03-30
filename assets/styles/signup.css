@@ -94,7 +94,16 @@ a:hover
     border: 1px solid #323330;
     border-radius: 3px;
 }
-
+.form-content .form-detail .input-text::placeholder{
+    color: #9f9b98;
+}
+.form-content .form-detail .credentials-error{
+    border-bottom: 1px solid #dc3545;
+}
+.form-content .form-detail .credentials-error:focus {
+    border: 1px solid #dc3545;
+    border-radius: 3px;
+}
 .buttons {
     flex-grow: 0;
     align-self: flex-end;
@@ -130,10 +139,11 @@ a:hover
 .buttons:focus {
     outline: none;
 }
+/*
 .student-type {
     display: flex;
     justify-content: space-between;
-    /*margin-top: 2rem;*/
+    !*margin-top: 2rem;*!
 }
 
 .radio-field {
@@ -174,4 +184,4 @@ a:hover
 
 .radio-field input[type=radio]:focus {
     outline: none;
-}
+}*/
