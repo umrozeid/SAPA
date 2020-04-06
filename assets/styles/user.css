@@ -103,28 +103,14 @@ body{
     background: -webkit-linear-gradient(45deg, #4facfe 0%, #00f2fe 100%)!important;
     background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%)!important;
 }
-#footer-upper-part{
+#footer {
     background-color: #0A1128;
     color: #FEFCFB;
 }
-#footer-upper-part a{
-    color: inherit;
-    text-decoration: inherit;
-}
-#footer-upper-part li{
-    list-style-type: none;
-}
-#footer-upper-part ul{
-    padding: 0;
-}
-#footer-lower-part{
-    color: #91908f;
-}
-#footer-lower-part a{
-    color: #91908f;
+#footer a{
+    color: #FEFCFB;
     text-decoration: underline;
 }
-
 .gradient-bloody{
     background: #f54ea2;
     background: -webkit-linear-gradient(45deg, #f54ea2, #ff7676)!important;

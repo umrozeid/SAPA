@@ -41,6 +41,7 @@ $(document).ready(function () {
       $("#usersForm").get(0).reset();
       $("#isAdmin").change();
       $("#canEditMembers").change();
+      $("#password").attr('required', true).attr("placeholder", "");
       $("#action").val("addUser");
       $("#save").val("Add");
       $(".modal-title").html("Add User");
@@ -57,7 +58,7 @@ $(document).ready(function () {
              $("#username").prop("readonly", true);
              $("#id").val(data.id);
              $("#username").val(data.username);
-             $("#password").val(data.password);
+             $("#password").val("").removeAttr('required').attr("placeholder", "Fill if you want to change password");
              $("#isAdmin").val(data.isAdmin).change();
              $("#canViewMembers").val(data.canViewMembers).change();
              $("#canEditMembers").val(data.canEditMembers).change();
@@ -72,7 +73,9 @@ $(document).ready(function () {
   $("#usersModal").on("submit", "#usersForm", function (event) {
         event.preventDefault();
         $('#save').attr('disabled','disabled');
+        $('input, select').prop('disabled', false);
         let userData = $(this).serialize();
+        console.log(userData);
         $.ajax({
             url: "assets/php/usersRequests.php",
             method: "POST",

@@ -1,7 +1,7 @@
 <?php
 
 include_once 'databaseConnection.php';
-include_once 'member.php';
+//include_once 'member.php';
 class MembersControl
 {
 

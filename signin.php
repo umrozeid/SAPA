@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($_POST["username"])){
         $userError = "Username is Required";
     } else{
-        $username = trim($_POST["username"]);
+        $username = $_POST["username"];
     }
 
     if(empty($_POST["password"])){

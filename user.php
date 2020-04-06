@@ -59,7 +59,7 @@ if(!isset($_SESSION["loggedIn"]) || !$_SESSION["loggedIn"] === true){
         <div class="col-12 col-md-5 feature mb-3 d-flex flex-column justify-content-center align-items-center p-2 gradient-ibiza <?php echo (isset($_SESSION['canAddEvents'])&&$_SESSION['canAddEvents'] == 1) ? 'clickable' : 'not-clickable'; ?>"
             <?php
             if (isset($_SESSION['canAddEvents'])&&$_SESSION['canAddEvents'] == 1){
-                echo "onclick=\"window.location.href = 'usersPanel.php' \"";
+                echo "onclick=\"window.location.href = 'events.php' \"";
             }
             ?>
         >

@@ -25,4 +25,5 @@ $usersClass = new UsersControl();
 //    echo "false";
 //}
 //$usersClass->addUser("sapaadmin","UmroZeid1",1,1,1,1,1);
+
 $usersClass->logOut();
