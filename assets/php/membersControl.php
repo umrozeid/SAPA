@@ -1,7 +1,6 @@
 <?php
 
 include_once 'databaseConnection.php';
-//include_once 'member.php';
 class MembersControl
 {
 
@@ -95,11 +94,7 @@ class MembersControl
         $sql = 'update members set isApproved = 1 where  id = ?';
         $stmt = $this->connection->prepare($sql);
         $stmt->bind_param("i",$memberID);
-        if($stmt->execute()){
-            return true;
-        }else {
-            return false;
-        }
+        return $stmt->execute();
     }
 
     public function getCurrentMembers(){
@@ -206,11 +201,7 @@ class MembersControl
         $sql = 'insert into members(name, email, faculty, program, universityID, address, facebook, phoneNumber, isApproved) values (?,?,?,?,?,?,?,?,?)';
         $stmt = $this->connection->prepare(($sql));
         $stmt->bind_param("ssssssssi",$name,$email,$faculty,$program,$universityID,$address,$facebook,$phoneNumber,$isApproved);
-        if($stmt->execute()){
-            return true;
-        }else{
-            return false;
-        }
+        return $stmt->execute();
     }
 
     public function getMember($memberID)
@@ -229,11 +220,7 @@ class MembersControl
         $sql = "delete from members where id = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->bind_param("i",$memberID);
-        if($stmt->execute()){
-            return true;
-        }else {
-            return false;
-        }
+        return $stmt->execute();
     }
 
     public function updateMember($id,$name, $email, $faculty, $program, $universityID, $address, $facebook, $phoneNumber, $isApproved):bool
@@ -249,11 +236,7 @@ class MembersControl
                 $sql = 'update members set name = ?,email = ?, faculty = ?, program = ?, universityID = ? , address = ?, facebook = ?, phoneNumber = ? , isApproved = ? where  id = ?';
                 $stmt = $this->connection->prepare(($sql));
                 $stmt->bind_param("ssssssssii",$name,$email,$faculty,$program,$universityID,$address,$facebook,$phoneNumber,$isApproved,$id);
-                if($stmt->execute()){
-                    return true;
-                }else{
-                    return false;
-                }
+                return $stmt->execute();
             }
         }
         $stmt->close();

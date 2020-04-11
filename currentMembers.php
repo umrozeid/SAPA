@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-if(!isset($_SESSION["loggedIn"]) || !$_SESSION["loggedIn"] === true){
-    header("location: signin.php");
-    exit;
-}
 if (!((isset($_SESSION['canViewMembers'])&&$_SESSION['canViewMembers'] == 1)||(isset($_SESSION['canEditMembers'])&&$_SESSION['canEditMembers'] == 1))){
     header("location: user.php");
     exit;
@@ -27,7 +23,7 @@ if (!((isset($_SESSION['canViewMembers'])&&$_SESSION['canViewMembers'] == 1)||(i
 </head>
 
 <body>
-<?php include "assets/php/navbar.php"; ?>
+<?php include "assets/php/userNavbar.php"; ?>
 <div class="container flex-grow-1 d-flex flex-column justify-content-center mt-5">
     <div class="align-self-end">
         <button type="button" name="add" id="addMember" class="btn btn-primary mb-2 <?php echo !(isset($_SESSION['canEditMembers'])&&$_SESSION['canEditMembers'] == 1) ? 'd-none' : ''; ?>">Add New Member</button>
@@ -108,7 +104,7 @@ if (!((isset($_SESSION['canViewMembers'])&&$_SESSION['canViewMembers'] == 1)||(i
         </div>
     </div>
 </div>
-<?php include "assets/php/footer.php"; ?>
+<?php include "assets/php/userFooter.php"; ?>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

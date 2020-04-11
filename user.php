@@ -22,7 +22,7 @@ if(!isset($_SESSION["loggedIn"]) || !$_SESSION["loggedIn"] === true){
 </head>
 
 <body>
-<?php include "assets/php/navbar.php"; ?>
+<?php include "assets/php/userNavbar.php"; ?>
 <div class="container flex-grow-1 d-flex flex-column justify-content-center">
     <h1 class="text-center mt-5 heading">Welcome to Users Area</h1>
     <div class="row justify-content-between align-items-center mt-5 mb-5">
@@ -59,7 +59,7 @@ if(!isset($_SESSION["loggedIn"]) || !$_SESSION["loggedIn"] === true){
         <div class="col-12 col-md-5 feature mb-3 d-flex flex-column justify-content-center align-items-center p-2 gradient-ibiza <?php echo (isset($_SESSION['canAddEvents'])&&$_SESSION['canAddEvents'] == 1) ? 'clickable' : 'not-clickable'; ?>"
             <?php
             if (isset($_SESSION['canAddEvents'])&&$_SESSION['canAddEvents'] == 1){
-                echo "onclick=\"window.location.href = 'events.php' \"";
+                echo "onclick=\"window.location.href = 'addEvents.php' \"";
             }
             ?>
         >
@@ -68,7 +68,7 @@ if(!isset($_SESSION["loggedIn"]) || !$_SESSION["loggedIn"] === true){
         </div>
     </div>
 </div>
-<?php include "assets/php/footer.php"; ?>
+<?php include "assets/php/userFooter.php"; ?>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

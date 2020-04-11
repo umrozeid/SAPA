@@ -1,7 +1,6 @@
 <?php
 
 include_once 'databaseConnection.php';
-//include_once 'user.php';
 class UsersControl
 {
 
@@ -64,11 +63,7 @@ class UsersControl
                 $stmt = $this->connection->prepare(($sql));
                 $hashedPassword = password_hash($password,PASSWORD_DEFAULT);
                 $stmt->bind_param("ssiiiii",$username,$hashedPassword,$isAdmin,$canViewMembers,$canEditMembers,$canAddAnnouncements,$canAddEvents);
-                if($stmt->execute()){
-                    return true;
-                }else{
-                    return false;
-                }
+                return $stmt->execute();
             }
         }
         $stmt->close();
@@ -89,19 +84,13 @@ class UsersControl
                     $sql = 'update users set username = ?, isAdmin = ?, canViewMembers = ?, canEditMembers= ? , canAddAnnouncements = ?, canAddEvents= ?  where  id = ?';
                     $stmt = $this->connection->prepare(($sql));
                     $stmt->bind_param("siiiiii",$username,$isAdmin,$canViewMembers,$canEditMembers,$canAddAnnouncements,$canAddEvents,$id);
-                    echo "111";
                 }else{
                     $hashedPassword = password_hash($password,PASSWORD_DEFAULT);
                     $sql = 'update users set username = ?,password = ?, isAdmin = ?, canViewMembers = ?, canEditMembers= ? , canAddAnnouncements = ?, canAddEvents= ?  where  id = ?';
                     $stmt = $this->connection->prepare(($sql));
                     $stmt->bind_param("ssiiiiii",$username,$hashedPassword,$isAdmin,$canViewMembers,$canEditMembers,$canAddAnnouncements,$canAddEvents,$id);
-                    echo "222";
                 }
-                if($stmt->execute()){
-                    return true;
-                }else{
-                    return false;
-                }
+                return $stmt->execute();
             }
         }
         $stmt->close();
@@ -116,11 +105,7 @@ class UsersControl
         $sql = "delete from users where id = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->bind_param("i",$userID);
-        if($stmt->execute()){
-            return true;
-        }else {
-            return false;
-        }
+        return $stmt->execute();
     }
 
     public function getUsers()

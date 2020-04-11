@@ -15,63 +15,14 @@
     flex-direction: row;
     flex-wrap: wrap;
     background: #FFF;
+    justify-content: center;
     /*border: 1px solid #E2E9ED;*/
   }
-  .at-grid[data-column="1"] .at-column {
-    width: 100%;
-    max-width: 100%;
-    min-width: 100%;
-    flex-basis: 100%;
-  }
-  .at-grid[data-column="2"] .at-column {
-    width: 50%;
-    max-width: 50%;
-    min-width: 50%;
-    flex-basis: 50%;
-  }
-  .at-grid[data-column="3"] .at-column {
+  .at-column {
     width: 33.3333333333%;
     max-width: 33.3333333333%;
     min-width: 33.3333333333%;
     flex-basis: 33.3333333333%;
-  }
-  .at-grid[data-column="4"] .at-column {
-    width: 25%;
-    max-width: 25%;
-    min-width: 25%;
-    flex-basis: 25%;
-  }
-  .at-grid[data-column="5"] .at-column {
-    width: 20%;
-    max-width:20%;
-    min-width: 20%;
-    flex-basis: 20%;
-  }
-  .at-grid[data-column="6"] .at-column {
-    width: 16.6666666667%;
-    max-width: 16.6666666667%;
-    min-width: 16.6666666667%;
-    flex-basis: 16.6666666667%;
-  }
-  .at-grid[data-column="7"] .at-column {
-    width: 14.2857142857%;
-    max-width: 14.2857142857%;
-    min-width: 14.2857142857%;
-    flex-basis: 14.2857142857%;
-  }
-  .at-grid[data-column="8"] .at-column {
-    width: 12.5%;
-    max-width: 12.5%;
-    min-width: 12.5%;
-    flex-basis: 12.5%;
-  }
-  .at-grid[data-column="9"] .at-column {
-    width: 11.1111111111%;
-    max-width: 11.1111111111%;
-    min-width: 11.1111111111%;
-    flex-basis: 11.1111111111%;
-  }
-  .at-column {
     z-index: 0;
     position: relative;
     background: #FFF;
@@ -243,18 +194,6 @@ p,h1,h2,h3,h4,h5,h6{
   #poly-div{
     height: 300px;
   }
-}
-.member-name{
-  font-size: 20px;
-  margin-bottom: 0px;
-}
-.member-position{
-    font-size: 15px;
-    font-weight: bold;
-}
-.member-image{
-    width: 250px;
-    height: 250px;
 }
 .achievements-text{
     font-size: 20px;

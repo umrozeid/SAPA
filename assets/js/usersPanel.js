@@ -75,7 +75,6 @@ $(document).ready(function () {
         $('#save').attr('disabled','disabled');
         $('input, select').prop('disabled', false);
         let userData = $(this).serialize();
-        console.log(userData);
         $.ajax({
             url: "assets/php/usersRequests.php",
             method: "POST",

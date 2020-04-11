@@ -1,15 +1,3 @@
-<?php
-session_start();
-
-if(!isset($_SESSION["loggedIn"]) || !$_SESSION["loggedIn"] === true){
-    header("location: signin.php");
-    exit;
-}
-if(!(isset($_SESSION['canAddEvents'])&&$_SESSION['canAddEvents'] == 1)){
-    header("location: user.php");
-    exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,18 +8,18 @@ if(!(isset($_SESSION['canAddEvents'])&&$_SESSION['canAddEvents'] == 1)){
     <title>S.A.P.A</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
-    <link rel="stylesheet" href="assets/styles/user.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
     <script src="https://kit.fontawesome.com/7429bca8b0.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=ABeeZee&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Volkhov&display=swap" rel="stylesheet">
 </head>
 
 <body>
-<?php include "assets/php/navbar.php"; ?>
+<?php include "assets/php/visitorNavbar.php"; ?>
 <div class="container flex-grow-1 d-flex flex-column justify-content-center mt-5">
     <div id="calendar"></div>
 </div>
-<?php include "assets/php/footer.php"; ?>
+<?php include "assets/php/visitorFooter.php"; ?>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -41,6 +29,6 @@ if(!(isset($_SESSION['canAddEvents'])&&$_SESSION['canAddEvents'] == 1)){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-<script src="assets/js/events.js"></script>
+<script src="assets/js/showEvents.js"></script>
 </body>
 </html>
