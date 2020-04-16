@@ -11,11 +11,6 @@ class UsersControl
         $this->connection = (new DatabaseConnection())->getConnection();
     }
 
-    function _destruct()
-    {
-        $this->connection->close();
-    }
-
     public function isUserAuthenticated($username,$password):bool
     {
         $username = strtolower($username);
@@ -189,6 +184,6 @@ class UsersControl
         session_start();
         $_SESSION = array();
         session_destroy();
-        header("location: ../../index.html");
+        header("location: ../../index.php");
     }
 }

@@ -5,7 +5,7 @@ class DatabaseConnection
 {
     const DB_SERVERNAME = 'localhost';
     const DB_USERNAME = 'root';
-    const DB_PASSWORD = 'UmroZeid1';
+    const DB_PASSWORD = 'TalaHethnawi1';
     const DB_NAME = 'sapa';
     private $connection = null;
 
@@ -15,6 +15,11 @@ class DatabaseConnection
         if ($this->connection->connect_error) {
             die("Connection failed");
         }
+    }
+
+    function _destruct()
+    {
+        $this->connection->close();
     }
 
     public function getConnection()

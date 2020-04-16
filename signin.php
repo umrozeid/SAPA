@@ -80,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <input type="submit" name="login" class="buttons" value="Login">
                 </div>
                 <div class="mt-md-0 mt-2 col-12 col-md-6 d-flex align-items-center justify-content-center">
-                    <a href="index.html">Go Back to Home</a>
+                    <a href="index.php">Go Back to Home</a>
                 </div>
             </div>
         </form>

@@ -1,6 +1,6 @@
 <?php
 
-
+include_once 'databaseConnection.php';
 class eventsControl
 {
     private $connection;
@@ -10,19 +10,13 @@ class eventsControl
         $this->connection = (new DatabaseConnection())->getConnection();
     }
 
-    function _destruct()
-    {
-        $this->connection->close();
-    }
-
     public function loadEvents():bool
     {
         $sql = "SELECT * FROM events ORDER BY id";
         $stmt = $this->connection->prepare($sql);
         if($stmt->execute())
         {
-            $result = $stmt->get_result();
-            $result = $result->fetch_all();
+            $result = $stmt->get_result()->fetch_all();
             $data = array();
             foreach ($result as $row)
             {

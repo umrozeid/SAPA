@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>S.A.P.A</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/styles/teamGrid.css">
     <link rel="stylesheet" href="assets/styles/main.css">
     <script src="https://kit.fontawesome.com/7429bca8b0.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=ABeeZee&display=swap" rel="stylesheet">
@@ -38,13 +39,13 @@
     </div>
 </div>
 <!--    Our Team Section-->
-<div class="container" id="ot" style="margin-top: 20px;">
+<div class="container mt-4" id="ot">
     <div class="at-section">
-      <div class="at-section__title">OUR TEAM</div>
+        <div class="at-section__title">OUR TEAM</div>
+        <div class="at-grid" id="first-members-container"></div>
+        <div class="at-grid" id="second-members-container"></div>
     </div>
-    <div class="at-grid" id="first-members-container"></div>
-    <div class="at-grid" id="second-members-container"></div>
-  </div>
+</div>
 <!--Achievements Section-->
  <div class="container-md mt-5" id="AC">
     <h2 class="sections-heading">Achievements</h2>
@@ -67,13 +68,13 @@
 <!--Join Us Section-->
     <div class="container-md mt-5" id="JU">
         <hr>
-        <div class="row align-items-center">
+        <div class="row align-items-center justify-content-center">
             <div class="col-12 col-md-8">
                 <h2>Would you like to become a part of SAPA ?</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur justo turpis, interdum dignissim tortor non, vestibulum iaculis justo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur justo turpis, interdum dignissim tortor non, vestibulum iaculis justo.</p>
                 <button class="buttons" onclick="window.location.href = 'register.php'">Join Us</button>
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-4 d-flex justify-content-center">
                 <img class="img-fluid" src="assets/img/logo.jpg" alt="logo">
             </div>
         </div>

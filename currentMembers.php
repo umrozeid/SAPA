@@ -42,7 +42,7 @@ if (!((isset($_SESSION['canViewMembers'])&&$_SESSION['canViewMembers'] == 1)||(i
                 <th>Facebook</th>
                 <th>Phone Number</th>
                 <th>Approved</th>
-                <th>Creation Time</th>
+                <th>Approval Time</th>
                 <th></th>
                 <th></th>
             </tr>

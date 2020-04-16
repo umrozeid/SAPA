@@ -8,6 +8,7 @@ $(document).ready(function() {
             $('.navbar').removeClass('transparent');
         }
     });
+
     let renderMember = function(member) {
 
         let $element = $(".member-template").clone().contents();
@@ -18,9 +19,9 @@ $(document).ready(function() {
         $(".member-facebook", $element).attr("href", member.facebook);
         $(".member-twitter", $element).attr("href", member.twitter);
         $(".member-linkedin", $element).attr("href", member.linkedin);
-        console.log()
         return $element;
     };
+
     $.getJSON("assets/json/members.json", function (data) {
         let $firstContainer = $("#first-members-container");
         let $secondContainer  = $("#second-members-container");

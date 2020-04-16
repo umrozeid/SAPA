@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $message = "Thank You for Registration";
         $success = true;
     }else {
-        $message = "MAKE SURE YOU HAVEN'T USED THIS EMAIL BEFORE OR TRY AGAIN LATER";
+        $message = "PLEASE TRY AGAIN LATER";
         $error = true;
     }
 }
@@ -98,7 +98,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <input type="submit" name="register" class="buttons" value="Register" >
                 </div>
                 <div class="mt-md-0 mt-2 col-12 col-md-8 d-flex align-items-center justify-content-center">
-                    <a href="index.html">Go Back to Home</a>
+                    <a href="index.php">Go Back to Home</a>
                 </div>
             </div>
             <div class="form-row <?php echo $error == true ? 'alert alert-warning' : ''; ?> <?php echo $success == true ? 'alert alert-success' : ''; ?>">

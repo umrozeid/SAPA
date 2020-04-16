@@ -11,11 +11,6 @@ class MembersControl
         $this->connection = (new DatabaseConnection())->getConnection();
     }
 
-    function _destruct()
-    {
-        $this->connection->close();
-    }
-
     public function getMemberRequests(){
         $membersArray = array();
         $sql = 'select * from members where isApproved = 0 ';
@@ -91,7 +86,7 @@ class MembersControl
 
     public function approveMember($memberID):bool
     {
-        $sql = 'update members set isApproved = 1 where  id = ?';
+        $sql = 'update members set isApproved = 1, creationTime = current_timestamp where  id = ?';
         $stmt = $this->connection->prepare($sql);
         $stmt->bind_param("i",$memberID);
         return $stmt->execute();
