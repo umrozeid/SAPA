@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg">
     <a class="nav-title navbar-title" href="index.php">SAPA</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars toggle-icon"></i>
     </button>
 
@@ -16,7 +17,7 @@
                 <a class="nav-link" href="membersPanel.php">Members</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#AU">Announcements</a>
+                <a class="nav-link" href="addAnnouncements.php">Announcements</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="addEvents.php">Events</a>

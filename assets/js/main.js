@@ -1,15 +1,15 @@
-$(document).ready(function() {
+$(document).ready(function () {
     const topDivHeight = $('#top-div').height();
     const navbarHeight = $('.navbar').height();
-    $(window).scroll(function() {
-        if ($(document).scrollTop() < (topDivHeight + navbarHeight ) && $(document).scrollTop() > navbarHeight) {
+    $(window).scroll(function () {
+        if ($(document).scrollTop() < (topDivHeight + navbarHeight) && $(document).scrollTop() > navbarHeight) {
             $('.navbar').addClass('transparent');
         } else {
             $('.navbar').removeClass('transparent');
         }
     });
 
-    let renderMember = function(member) {
+    let renderMember = function (member) {
 
         let $element = $(".member-template").clone().contents();
 
@@ -24,13 +24,12 @@ $(document).ready(function() {
 
     $.getJSON("assets/json/members.json", function (data) {
         let $firstContainer = $("#first-members-container");
-        let $secondContainer  = $("#second-members-container");
+        let $secondContainer = $("#second-members-container");
         let i = 0;
-        if(data.length % 3 === 1){
+        if (data.length % 3 === 1) {
             $firstContainer.append(renderMember(data[0]));
             i++;
-        }
-        else if(data.length % 3 ===  2){
+        } else if (data.length % 3 === 2) {
             $firstContainer.append(renderMember(data[0]));
             $firstContainer.append(renderMember(data[1]));
             i = i + 2;

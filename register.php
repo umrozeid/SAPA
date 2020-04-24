@@ -5,7 +5,7 @@ $name = $email = $faculty = $program = $universityID = $address = $facebook = $p
 $message = "";
 $success = false;
 $error = false;
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $email = $_POST["email"];
     $faculty = $_POST["faculty"];
@@ -14,10 +14,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $address = $_POST["address"];
     $facebook = $_POST["facebook"];
     $phoneNumber = $_POST["phoneNumber"];
-    if($membersControl->addMember($name, $email, $faculty, $program, $universityID, $address, $facebook, $phoneNumber, 0)){
+    if ($membersControl->addMember($name, $email, $faculty, $program, $universityID, $address, $facebook, $phoneNumber, 0)) {
         $message = "Thank You for Registration";
         $success = true;
-    }else {
+    } else {
         $message = "PLEASE TRY AGAIN LATER";
         $error = true;
     }
@@ -31,12 +31,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Join Us</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/styles/signup.css">
     <script src="https://kit.fontawesome.com/7429bca8b0.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=ABeeZee&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 </head>
 
 <body>
@@ -50,7 +53,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <p>Are you ready to join us?</p>
             </div>
         </div>
-        <form class="form-detail col-12 col-md-6" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" name="registerForm" id="registerForm">
+        <form class="form-detail col-12 col-md-6" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
+              method="post" name="registerForm" id="registerForm">
             <div class="form-row">
                 <label for="name">NAME</label>
                 <input type="text" name="name" id="name" class="input-text" placeholder="" required>
@@ -81,21 +85,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <div class="form-row">
                 <label for="phoneNumber">PHONE NUMBER</label>
-                <input type="tel" name="phoneNumber" id="phoneNumber" class="input-text" placeholder="" pattern="[0]{1}[5]{1}[0-9]{8}"  title="i.e. 0598765432" required>
+                <input type="tel" name="phoneNumber" id="phoneNumber" class="input-text" placeholder=""
+                       pattern="[0]{1}[5]{1}[0-9]{8}" title="i.e. 0598765432" required>
             </div>
-            <!--<div class="student-type">
-                <div class="radio-field">
-                    <input checked="checked" id="school-student" name="student-type" type="radio">
-                    <label for="school-student">School Student</label>
-                </div>
-                <div class="radio-field">
-                    <input id="university-student" name="student-type" type="radio">
-                    <label for="university-student">University Student</label>
-                </div>
-            </div>-->
             <div class="form-row row my-3">
                 <div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
-                    <input type="submit" name="register" class="buttons" value="Register" >
+                    <input type="submit" name="register" class="buttons" value="Register">
                 </div>
                 <div class="mt-md-0 mt-2 col-12 col-md-8 d-flex align-items-center justify-content-center">
                     <a href="index.php">Go Back to Home</a>
@@ -107,9 +102,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </form>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

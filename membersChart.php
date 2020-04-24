@@ -1,12 +1,11 @@
 <?php
 $connection = new mysqli('localhost', 'root', 'TalaHethnawi1', 'sapa');
-if(!empty($_POST['action']) && $_POST['action'] == 'getGraphInfo') {
-    if (empty($_POST['faculty'])){
-        $sql = 'SELECT concat(monthname(creationTime), " ", year(creationTime)) as "date",SUM(isApproved) as "sum" from members WHERE creationTime > DATE_SUB(DATE_FORMAT(now(),"%Y-%m-01"), INTERVAL 12 MONTH) GROUP BY year(creationTime),monthname(creationTime) HAVING SUM(isApproved) > 0 ORDER BY year(creationTime)  , month(creationTime) ';
+if (!empty($_POST['action']) && $_POST['action'] == 'getChartInfo') {
+    if (empty($_POST['faculty'])) {
+        $sql = 'SELECT concat(monthname(creationTime), " ", year(creationTime)) as "date",SUM(isApproved) as "sum" from members WHERE creationTime >= DATE_SUB(DATE_FORMAT(now(),"%Y-%m-01"), INTERVAL 12 MONTH) GROUP BY year(creationTime),monthname(creationTime) HAVING SUM(isApproved) > 0 ORDER BY year(creationTime)  , month(creationTime) ';
         $stmt = $connection->prepare($sql);
-    }
-    else{
-        $sql = 'SELECT concat(monthname(creationTime), " ", year(creationTime)) as "date",SUM(isApproved) as "sum" from members WHERE creationTime > DATE_SUB(DATE_FORMAT(now(),"%Y-%m-01"), INTERVAL 12 MONTH) AND faculty = ? GROUP BY year(creationTime),monthname(creationTime) HAVING SUM(isApproved) > 0 ORDER BY year(creationTime)  , month(creationTime) ';
+    } else {
+        $sql = 'SELECT concat(monthname(creationTime), " ", year(creationTime)) as "date",SUM(isApproved) as "sum" from members WHERE creationTime >= DATE_SUB(DATE_FORMAT(now(),"%Y-%m-01"), INTERVAL 12 MONTH) AND faculty = ? GROUP BY year(creationTime),monthname(creationTime) HAVING SUM(isApproved) > 0 ORDER BY year(creationTime)  , month(creationTime) ';
         $stmt = $connection->prepare($sql);
         $stmt->bind_param("s", $_POST['faculty']);
     }
@@ -26,11 +25,14 @@ if(!empty($_POST['action']) && $_POST['action'] == 'getGraphInfo') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>S.A.P.A</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
     <style>
-        body{
+        body {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -47,12 +49,12 @@ if(!empty($_POST['action']) && $_POST['action'] == 'getGraphInfo') {
             <select class="form-control" id="faculty" name="faculty" form="facultyForm">
                 <option value=''>All</option>
                 <?php
-                $sql = 'SELECT distinct faculty from members WHERE creationTime > DATE_SUB(DATE_FORMAT(now(),"%Y-%m-01"), INTERVAL 12 MONTH) AND isApproved = 1 order by faculty';
+                $sql = 'SELECT distinct faculty from members WHERE creationTime >= DATE_SUB(DATE_FORMAT(now(),"%Y-%m-01"), INTERVAL 12 MONTH) AND isApproved = 1 order by faculty';
                 $stmt = $connection->prepare($sql);
                 $stmt->execute();
                 $result = $stmt->get_result();
-                while($row = $result->fetch_assoc()) {
-                    echo '<option value="'.$row["faculty"].'">'.$row["faculty"].'</option>';
+                while ($row = $result->fetch_assoc()) {
+                    echo '<option value="' . $row["faculty"] . '">' . $row["faculty"] . '</option>';
                 }
                 ?>
             </select>
@@ -62,36 +64,36 @@ if(!empty($_POST['action']) && $_POST['action'] == 'getGraphInfo') {
 </div>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         let membersChart = null;
-        let formatData = function(data){
+        let formatData = function (data) {
             let membersCount = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
             let monthsArray = [];
             let monthsNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             let date = new Date();
-            for(let i = 0; i < 13; i++){
+            for (let i = 0; i < 13; i++) {
                 monthsArray.unshift(monthsNames[date.getMonth()] + " " + date.getFullYear());
                 date.setMonth(date.getMonth() - 1);
             }
             let j = 0;
-            for(let i = 0; i < data.length; i++){
-                for(let k = j; k < monthsArray.length; k++){
-                    if(data[i][0] === monthsArray[k]){
+            for (let i = 0; i < data.length; i++) {
+                for (let k = j; k < monthsArray.length; k++) {
+                    if (data[i][0] === monthsArray[k]) {
                         membersCount[k] = data[i][1];
-                         j = k + 1;
-                         break;
+                        j = k + 1;
+                        break;
                     }
                 }
             }
-            return([monthsArray, membersCount]);
+            return ([monthsArray, membersCount]);
         };
-        let updateGraph = function(faculty){
+        let updateChart = function (faculty) {
             if (membersChart != null)
                 membersChart.destroy();
             $.ajax({
                 method: "POST",
-                data:{action: "getGraphInfo", faculty: faculty},
-                success: function(data) {
+                data: {action: "getChartInfo", faculty: faculty},
+                success: function (data) {
                     data = formatData(JSON.parse(data));
                     let ctx = $("#membersChart").get(0).getContext('2d');
                     membersChart = new Chart(ctx, {
@@ -139,7 +141,7 @@ if(!empty($_POST['action']) && $_POST['action'] == 'getGraphInfo') {
             });
         };
         $("#faculty").change(function () {
-            updateGraph($(this).val());
+            updateChart($(this).val());
         });
         $("#faculty").change();
     });

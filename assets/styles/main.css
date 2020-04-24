@@ -1,146 +1,181 @@
- body {
+body {
     background: #FFF;
-    /*font-family: 'Roboto', sans-serif;*/
     font-family: 'Volkhov', serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  /*.container {
-    max-width: 1170px;
-    width: 100%;
-    margin: 100px auto;
-    padding: 0 20px;
-    box-sizing: border-box;
-    -webkit-transform-origin: top center;
-            transform-origin: top center;
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
-  }*/
-
-p,h1,h2,h3,h4,h5,h6{
-  /*font-family: 'ABeeZee', sans-serif;*/
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
-.navbar{
+
+.navbar {
     background-color: #0A1128;
     transition: all 0.3s ease-out;
     font-family: 'Volkhov', serif;
 }
+
 .navbar-title {
-  letter-spacing: 5px;
+    letter-spacing: 5px;
 }
+
 .transparent {
-  background-color: transparent;
+    background-color: transparent;
 }
-.navbar a{
+
+.navbar a {
     color: #FEFCFB;
 }
-.navbar a:hover{
-  text-decoration: none;
+
+.navbar a:hover {
+    text-decoration: none;
 }
-.nav-title{
+
+.nav-title {
     font-size: 35px;
 }
-.nav-item{
-  padding-right: 5px;
-  letter-spacing: 1px;
+
+.nav-item {
+    padding-right: 5px;
+    letter-spacing: 1px;
 }
-.toggle-icon{
+
+.toggle-icon {
     color: #FEFCFB;
 }
+
 #top-div {
-  background-image: url("../img/milky-way-2560x1440-stars-5k-15784.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
+    background-image: url("../img/milky-way-2560x1440-stars-5k-15784.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh
 }
-.sections-heading{
+
+.top-div-text-1 {
+    font-size: 50px;
+    color: white;
+}
+
+.top-div-text-2 {
+    font-size: 30px;
+    color: white;
+}
+
+.sections-heading {
     text-align: center;
 }
-#poly-div{
-  height: 200px;
+
+#poly-div {
+    height: 200px;
 }
+
 @media (max-width: 600px) {
-  #poly-div{
-    height: 300px;
-  }
+    #poly-div {
+        height: 300px;
+    }
 }
-.achievements-text{
+
+.achievements-text {
     font-size: 20px;
     font-weight: bold;
 }
-#AU hr{
+
+#AU hr {
     border: 1px solid #bfbfbd;
 }
-.achievements-icon{
+
+.achievements-icon {
     font-size: 55px;
-     color: rgb(221, 189, 4);
+    color: rgb(221, 189, 4);
 }
-#footer-upper-part{
+
+#footer-upper-part {
     background-color: #0A1128;
     color: #FEFCFB;
 }
-#footer-upper-part a{
+
+#footer-upper-part a {
     color: inherit;
     text-decoration: inherit;
 }
-#footer-upper-part li{
+
+#footer-upper-part li {
     list-style-type: none;
 }
-#footer-upper-part ul{
+
+#footer-upper-part ul {
     padding: 0;
 }
-#footer-lower-part{
-  color: #91908f;
+
+#footer-lower-part {
+    color: #91908f;
 }
-#footer-lower-part a{
-  color: #91908f;
-  text-decoration: underline;
+
+#footer-lower-part a {
+    color: #91908f;
+    text-decoration: underline;
 }
-#aboutUs{
+
+#aboutUs {
     color: white;
     margin-top: -5px;
     clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 60% 75%, 50% 88%, 40% 75%, 0% 75%);
-    /*height: 90vh;*/
-    background:#0a1128;
+    background: #0a1128;
 }
 
-.top-left {
-  position: absolute;
-  top: 35%;
-  left: 16%;
-  text-align: center;
-  color: white;
-}
-
-.top-left1 {
-  position: absolute;
-  top: 45%;
-  left: 16%;
-  text-align: center;
-  color: white;
-}
 .buttons {
-  flex-grow: 0;
-  width: 150px;
-  height: 50px;
-  display: inline-block;
-  border-radius: 4px;
-  border-style: solid;
-  border-width: 0;
-  background-color: #0E1838;
-  /*Text Styling*/
-  font-family: Roboto, serif;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  letter-spacing: 1px;
-  background-position: center;
-  transition: background 0.8s;
+    flex-grow: 0;
+    width: 150px;
+    height: 50px;
+    display: inline-block;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 0;
+    background-color: #0E1838;
+    /*Text Styling*/
+    font-family: Roboto, serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    letter-spacing: 1px;
+    background-position: center;
+    transition: background 0.8s;
 }
 
 .buttons:hover {
-  background: rgb(22, 37, 87) radial-gradient(circle, transparent 1%, white 1%) center/15000%;
+    background: rgb(22, 37, 87) radial-gradient(circle, transparent 1%, white 1%) center/15000%;
+}
+
+.announcement-card-link {
+    font-size: 20px;
+    color: #0A1128;
+}
+
+.announcement-card-link:active {
+    color: #0A1128;
+}
+
+.announcement-carousel-buttons {
+    color: #0E1838;
+    font-size: 35px;
+}
+
+.announcement-image {
+    height: 500px;
+    object-fit: none;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+    .carousel-control-prev {
+        margin-left: -35px;
+    }
+
+    .carousel-control-next {
+        margin-right: -35px;
+    }
 }

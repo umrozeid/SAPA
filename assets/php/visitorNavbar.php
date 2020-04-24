@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg  sticky-top">
     <a class="nav-title navbar-title" href="index.php">SAPA</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars toggle-icon"></i>
     </button>
 
@@ -9,17 +10,17 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#AU">About US</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="showEvents.php">Events</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#ot" tabindex="-1" aria-disabled="true">Our Team</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="showAnnouncements.php">Announcements</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#AC" tabindex="-1" aria-disabled="true">Achievements</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="register.php">Join Us</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#JU" tabindex="-1" aria-disabled="true">Join Us</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="login.php">Login</a>
             </li>
         </ul>
     </div>

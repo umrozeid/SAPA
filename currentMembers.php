@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!((isset($_SESSION['canViewMembers'])&&$_SESSION['canViewMembers'] == 1)||(isset($_SESSION['canEditMembers'])&&$_SESSION['canEditMembers'] == 1))){
+if (!((isset($_SESSION['canViewMembers']) && $_SESSION['canViewMembers'] == 1) || (isset($_SESSION['canEditMembers']) && $_SESSION['canEditMembers'] == 1))) {
     header("location: user.php");
     exit;
 }
@@ -13,20 +13,26 @@ if (!((isset($_SESSION['canViewMembers'])&&$_SESSION['canViewMembers'] == 1)||(i
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>S.A.P.A</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Current Members</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/styles/user.css">
     <script src="https://kit.fontawesome.com/7429bca8b0.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=ABeeZee&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Volkhov&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 </head>
 
 <body>
 <?php include "assets/php/userNavbar.php"; ?>
 <div class="container flex-grow-1 d-flex flex-column justify-content-center mt-5">
     <div class="align-self-end">
-        <button type="button" name="add" id="addMember" class="btn btn-primary mb-2 <?php echo !(isset($_SESSION['canEditMembers'])&&$_SESSION['canEditMembers'] == 1) ? 'd-none' : ''; ?>">Add New Member</button>
+        <button type="button" name="add" id="addMember"
+                class="btn btn-primary mb-2 <?php echo !(isset($_SESSION['canEditMembers']) && $_SESSION['canEditMembers'] == 1) ? 'd-none' : ''; ?>">
+            Add New Member
+        </button>
     </div>
     <div class="table-responsive">
         <table id="membersTable" class="table table-bordered table-striped">
@@ -90,7 +96,8 @@ if (!((isset($_SESSION['canViewMembers'])&&$_SESSION['canViewMembers'] == 1)||(i
                         </div>
                         <div class="form-group">
                             <label for="phoneNumber">Phone Number</label>
-                            <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control" pattern="[0]{1}[5]{1}[0-9]{8}"  title="i.e. 0598765432" required>
+                            <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control"
+                                   pattern="[0]{1}[5]{1}[0-9]{8}" title="i.e. 0598765432" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -107,10 +114,13 @@ if (!((isset($_SESSION['canViewMembers'])&&$_SESSION['canViewMembers'] == 1)||(i
 <?php include "assets/php/userFooter.php"; ?>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 <script src="assets/js/currentMembers.js"></script>
 </body>

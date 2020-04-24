@@ -1,8 +1,10 @@
-$(document).ready(function() {
-
-    let showAddModal = function(start , end) {
-        start = start || new Date().toJSON().slice(0,16);
-        end = end || new Date().toJSON().slice(0,16);
+$(document).ready(function () {
+    let showAddModal = function (start, end) {
+        let currentTime = new Date();
+        let now = new Date(currentTime.getTime() - currentTime.getTimezoneOffset() * 60000).toJSON().slice(0, 16);
+        let anHourLater = new Date(currentTime.getTime() - currentTime.getTimezoneOffset() * 60000 + 3600000).toJSON().slice(0, 16);
+        start = start || now;
+        end = end || anHourLater;
         $("#eventsModal").modal('show');
         $("#eventsForm").get(0).reset();
         $("#action").val("addEvent");
@@ -13,18 +15,22 @@ $(document).ready(function() {
         $("#delete").addClass("d-none");
     };
 
-    let showUpdateModal = function(id) {
+    let showUpdateModal = function (id) {
         $.ajax({
             url: "assets/php/eventsRequests.php",
             method: "POST",
             data: {id: id, action: "getEvent"},
             dataType: "json",
             success: function (data) {
+                let startTime = data.start.replace(" ", "T");
+                startTime = startTime.substring(0, 16);
+                let endTime = data.end.replace(" ", "T");
+                endTime = endTime.substring(0, 16);
                 $("#eventsModal").modal('show');
                 $("#id").val(data.id);
                 $("#title").val(data.title);
-                $("#start").val(new Date(data.start).toJSON().slice(0,16));
-                $("#end").val(new Date(data.end).toJSON().slice(0,16));
+                $("#start").val(startTime);
+                $("#end").val(endTime);
                 $("#action").val("updateEvent");
                 $("#save").val("Save");
                 $(".modal-title").html("Edit Event");
@@ -33,67 +39,61 @@ $(document).ready(function() {
         });
     };
     let calendar = $('#calendar').fullCalendar({
-        editable:true,
-        header:{
-            left:'prev,next today',
-            center:'title',
-            right:'month,agendaWeek,agendaDay'
+        editable: true,
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
         },
         events: 'assets/php/eventsRequests.php',
-        selectable:true,
-        selectHelper:true,
-        select: function(start, end, allDay)
-        {
-            showAddModal(start.toDate().toJSON().slice(0,16), end.toDate().toJSON().slice(0,16));
+        selectable: true,
+        selectHelper: true,
+        select: function (start, end, allDay) {
+            showAddModal(start.toDate().toJSON().slice(0, 16), end.toDate().toJSON().slice(0, 16));
         },
-        eventResize:function(event)
-        {
-            let start = event.start.toDate().toJSON().slice(0,16);
+        eventResize: function (event) {
+            let start = event.start.toDate().toJSON().slice(0, 16);
             let end;
-            if ( event.end == null){
+            if (event.end == null) {
                 end = start;
-            }else {
-                end = event.end.toDate().toJSON().slice(0,16);
+            } else {
+                end = event.end.toDate().toJSON().slice(0, 16);
             }
             let title = event.title;
             let id = event.id;
             $.ajax({
-                url:"assets/php/eventsRequests.php",
-                type:"POST",
-                data:{title:title, start:start, end:end, id:id, action:"updateEvent"},
-                success:function()
-                {
+                url: "assets/php/eventsRequests.php",
+                type: "POST",
+                data: {title: title, start: start, end: end, id: id, action: "updateEvent"},
+                success: function () {
                     calendar.fullCalendar('refetchEvents');
                     alert("Event Updated");
                 }
             });
         },
 
-        eventDrop:function(event)
-        {
-            let start = event.start.toDate().toJSON().slice(0,16);
+        eventDrop: function (event) {
+            let start = event.start.toDate().toJSON().slice(0, 16);
             let end;
-            if ( event.end == null){
+            if (event.end == null) {
                 end = start;
-            }else {
-                end = event.end.toDate().toJSON().slice(0,16);
+            } else {
+                end = event.end.toDate().toJSON().slice(0, 16);
             }
             let title = event.title;
             let id = event.id;
             $.ajax({
-                url:"assets/php/eventsRequests.php",
-                type:"POST",
-                data:{title:title, start:start, end:end, id:id, action:"updateEvent"},
-                success:function()
-                {
+                url: "assets/php/eventsRequests.php",
+                type: "POST",
+                data: {title: title, start: start, end: end, id: id, action: "updateEvent"},
+                success: function () {
                     calendar.fullCalendar('refetchEvents');
                     alert("Event Updated");
                 }
             });
         },
 
-        eventClick:function(event)
-        {
+        eventClick: function (event) {
             showUpdateModal(event.id);
         }
     });
@@ -104,30 +104,34 @@ $(document).ready(function() {
 
     $("#eventsModal").on("submit", "#eventsForm", function (event) {
         event.preventDefault();
-        $('#save').attr('disabled','disabled');
-        let eventData = $(this).serialize();
-        $.ajax({
-            url: "assets/php/eventsRequests.php",
-            method: "POST",
-            data: eventData,
-            success: function (data) {
-                $("#eventsForm").get(0).reset();
-                $("#eventsModal").modal("hide");
-                $("#save").attr('disabled', false);
-                alert("Done Successfully");
-                calendar.fullCalendar('refetchEvents');
-            }
-        });
+        if ($("#start").val() > $("#end").val()) {
+            alert("Start time must be after end time.");
+        } else {
+            $('#save').attr('disabled', 'disabled');
+            let eventData = $(this).serialize();
+            $.ajax({
+                url: "assets/php/eventsRequests.php",
+                method: "POST",
+                data: eventData,
+                success: function (data) {
+                    $("#eventsForm").get(0).reset();
+                    $("#eventsModal").modal("hide");
+                    $("#save").attr('disabled', false);
+                    alert("Done Successfully");
+                    calendar.fullCalendar('refetchEvents');
+                }
+            });
+        }
     });
 
     $("#delete").on("click", function () {
         let id = $("#id").val();
-        if(confirm("Are you sure you want to delete this user?")) {
+        if (confirm("Are you sure you want to delete this user?")) {
             $.ajax({
                 url: "assets/php/eventsRequests.php",
                 method: "POST",
                 data: {id: id, action: "deleteEvent"},
-                success: function(data) {
+                success: function (data) {
                     calendar.fullCalendar('refetchEvents');
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -136,4 +140,5 @@ $(document).ready(function() {
             })
         }
     });
+
 });

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true){
+if (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true) {
     header("location: user.php");
     exit;
 }
@@ -10,25 +10,25 @@ require_once "assets/php/usersControl.php";
 $usersControl = new UsersControl();
 $username = $password = "";
 $userError = $passwordError = "";
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if(empty($_POST["username"])){
+    if (empty($_POST["username"])) {
         $userError = "Username is Required";
-    } else{
+    } else {
         $username = $_POST["username"];
     }
 
-    if(empty($_POST["password"])){
+    if (empty($_POST["password"])) {
         $password_err = "Password is Required";
-    } else{
+    } else {
         $password = $_POST["password"];
     }
 
-    if(empty($userError) && empty($passwordError)){
-        if($usersControl->isUserAuthenticated($username,$password)){
+    if (empty($userError) && empty($passwordError)) {
+        if ($usersControl->isUserAuthenticated($username, $password)) {
             header("location: user.php");
             exit;
-        }else{
+        } else {
             $userError = $passwordError = "PLEASE CHECK YOUR INFORMATION";
         }
     }
@@ -42,27 +42,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign In</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Log In</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/styles/signup.css">
     <script src="https://kit.fontawesome.com/7429bca8b0.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=ABeeZee&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 </head>
 
 <body>
 <div class="container h-100 justify-content-center align-items-center d-flex">
     <div class="form-content row ">
-        <div class="form-left d-flex justify-content-center align-items-center flex-column col-12 col-md-6" id="sign-in-form-left-background">
+        <div class="form-left d-flex justify-content-center align-items-center flex-column col-12 col-md-6"
+             id="sign-in-form-left-background">
             <div class="text-1">
                 <p>Welcome to SAPA</p>
             </div>
-            <!--<div class="text-2">
-                <p>.....</p>
-            </div>-->
         </div>
-        <form class="form-detail col-12 col-md-6" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post" id="myform">
+        <form class="form-detail col-12 col-md-6" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
+              method="post" id="myform">
             <div class="form-row">
                 <label for="username">USERNAME</label>
                 <input type="text" name="username" id="username"

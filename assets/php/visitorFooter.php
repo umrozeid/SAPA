@@ -4,28 +4,28 @@
             <div class="row">
                 <div class="col-12 col-md-6">
                     <h4>About SAPA</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur justo turpis, interdum dignissim tortor non, vestibulum iaculis justo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur justo turpis, interdum dignissim tortor non, vestibulum iaculis justo.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur justo turpis, interdum
+                        dignissim tortor non, vestibulum iaculis justo.Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Curabitur justo turpis, interdum dignissim tortor non, vestibulum iaculis
+                        justo.</p>
                 </div>
                 <div class="col-12 col-md-3">
                     <h4>Site Links</h4>
                     <ul>
                         <li>
-                            <a href="#">Home <span class="sr-only">(current)</span></a>
+                            <a href="index.php">Home</a>
                         </li>
                         <li>
-                            <a href="#AU">About US</a>
+                            <a href="showEvents.php">Events</a>
                         </li>
                         <li>
-                            <a href="#ot">Our TEAM</a>
+                            <a href="showAnnouncements.php">Announcements</a>
                         </li>
                         <li>
-                            <a href="#AC">Achievements</a>
+                            <a href="register.php">Join Us</a>
                         </li>
                         <li>
-                            <a href="#JU">Join Us</a>
-                        </li>
-                        <li>
-                            <a href="signin.php">Log In</a>
+                            <a href="login.php">Login</a>
                         </li>
                     </ul>
                 </div>

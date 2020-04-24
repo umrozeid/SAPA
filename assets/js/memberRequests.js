@@ -31,12 +31,12 @@ $(document).ready(function () {
     $("#membersTable").on("click", ".approve", function () {
         console.log("aaa");
         let id = $(this).attr("data-row-id");
-        if(confirm("Are you sure you want to approve this member request?")) {
+        if (confirm("Are you sure you want to approve this member request?")) {
             $.ajax({
                 url: "assets/php/membersRequests.php",
                 method: "POST",
                 data: {id: id, action: "approveMember"},
-                success: function(data) {
+                success: function (data) {
                     membersTable.ajax.reload();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {

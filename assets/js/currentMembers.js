@@ -62,7 +62,7 @@ $(document).ready(function () {
     });
     $("#membersModal").on("submit", "#membersForm", function (event) {
         event.preventDefault();
-        $('#save').attr('disabled','disabled');
+        $('#save').attr('disabled', 'disabled');
         let memberData = $(this).serialize();
         $.ajax({
             url: "assets/php/membersRequests.php",
@@ -78,12 +78,12 @@ $(document).ready(function () {
     });
     $("#membersTable").on("click", ".delete", function () {
         let id = $(this).attr("data-row-id");
-        if(confirm("Are you sure you want to delete this Member?")) {
+        if (confirm("Are you sure you want to delete this Member?")) {
             $.ajax({
                 url: "assets/php/membersRequests.php",
                 method: "POST",
                 data: {id: id, action: "deleteMember"},
-                success: function(data) {
+                success: function (data) {
                     membersTable.ajax.reload();
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
